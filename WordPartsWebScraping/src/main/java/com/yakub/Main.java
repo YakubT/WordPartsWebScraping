@@ -2,6 +2,7 @@ package com.yakub;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.List;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -21,6 +22,7 @@ public class Main {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--headless");
         WebDriver driver = new ChromeDriver(chromeOptions);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         parseData(driver,adjUrl,"adj.txt");
         parseData(driver,nounUrl,"noun.txt");
     }
