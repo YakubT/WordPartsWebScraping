@@ -3,6 +3,7 @@ package com.yakub.pages;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.yakub.Utility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,7 +35,8 @@ public class Gorokh {
     }
 
     public List<String> getWordsOnPage() {
-        return words.stream().map(WebElement::getText).collect(Collectors.toList());
+        return words.stream().map(WebElement::getText).map(Utility::removeDiacritics).
+                collect(Collectors.toList());
     }
 
     public boolean nextPage() {
